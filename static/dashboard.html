@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — FastAPI Calculator</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1 class="brand">FastAPI Calculator</h1>
+      <div class="topbar-actions">
+        <a href="/stats" class="btn btn-ghost" data-testid="link-stats">Stats</a>
+        <span class="user-label" data-testid="username">…</span>
+        <button
+          id="logout-btn"
+          class="btn btn-ghost"
+          data-testid="btn-logout"
+        >Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- Add form -->
+    <section class="card">
+      <h2>New calculation</h2>
+      <form id="create-form" class="calc-form" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="create-a">First number</label>
+            <input
+              id="create-a"
+              type="number"
+              step="any"
+              required
+              data-testid="input-a"
+            />
+          </div>
+          <div class="form-field">
+            <label for="create-b">Second number</label>
+            <input
+              id="create-b"
+              type="number"
+              step="any"
+              required
+              data-testid="input-b"
+            />
+          </div>
+          <div class="form-field">
+            <label for="create-type">Operation</label>
+            <select id="create-type" required data-testid="select-type">
+              <option value="Add">Add</option>
+              <option value="Sub">Subtract</option>
+              <option value="Multiply">Multiply</option>
+              <option value="Divide">Divide</option>
+              <option value="Power">Power (a^b)</option>
+              <option value="Modulus">Modulus (a mod b)</option>
+              <option value="Root">Root (b-th root of a)</option>
+            </select>
+          </div>
+          <div class="form-field form-submit">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-testid="btn-create"
+            >Add calculation</button>
+          </div>
+        </div>
+        <p class="field-error" data-testid="error-create"></p>
+      </form>
+      <div
+        id="create-status"
+        class="status hidden"
+        role="status"
+        aria-live="polite"
+        data-testid="status-create"
+      ></div>
+    </section>
+
+    <!-- Browse -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Your calculations</h2>
+        <button
+          id="refresh-btn"
+          class="btn btn-ghost"
+          data-testid="btn-refresh"
+        >Refresh</button>
+      </div>
+
+      <div
+        id="calc-list-empty"
+        class="empty hidden"
+        data-testid="empty-state"
+      >
+        No calculations yet. Add one above.
+      </div>
+
+      <table
+        id="calc-table"
+        class="calc-table"
+        data-testid="calc-table"
+      >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>a</th>
+            <th>Op</th>
+            <th>b</th>
+            <th>Result</th>
+            <th>Created</th>
+            <th class="actions-col">Actions</th>
+          </tr>
+        </thead>
+        <tbody data-testid="calc-tbody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Edit modal -->
+  <div
+    id="edit-modal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="edit-title"
+    data-testid="edit-modal"
+  >
+    <div class="modal-card">
+      <h2 id="edit-title">Edit calculation</h2>
+      <form id="edit-form" class="calc-form" novalidate>
+        <input type="hidden" id="edit-id" />
+        <div class="form-field">
+          <label for="edit-a">First number</label>
+          <input
+            id="edit-a"
+            type="number"
+            step="any"
+            required
+            data-testid="edit-input-a"
+          />
+        </div>
+        <div class="form-field">
+          <label for="edit-b">Second number</label>
+          <input
+            id="edit-b"
+            type="number"
+            step="any"
+            required
+            data-testid="edit-input-b"
+          />
+        </div>
+        <div class="form-field">
+          <label for="edit-type">Operation</label>
+          <select id="edit-type" required data-testid="edit-select-type">
+            <option value="Add">Add</option>
+            <option value="Sub">Subtract</option>
+            <option value="Multiply">Multiply</option>
+            <option value="Divide">Divide</option>
+            <option value="Power">Power (a^b)</option>
+            <option value="Modulus">Modulus (a mod b)</option>
+            <option value="Root">Root (b-th root of a)</option>
+          </select>
+        </div>
+        <p class="field-error" data-testid="error-edit"></p>
+        <div class="modal-actions">
+          <button
+            type="button"
+            class="btn btn-ghost"
+            id="edit-cancel"
+            data-testid="btn-edit-cancel"
+          >Cancel</button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            data-testid="btn-edit-save"
+          >Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — FastAPI Calculator</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <main class="card">
+    <h1>Create an account</h1>
+    <p class="subtitle">Register a new user with a secure password.</p>
+
+    <form id="register-form" novalidate>
+      <label for="username">Username</label>
+      <input
+        id="username"
+        name="username"
+        type="text"
+        minlength="3"
+        maxlength="50"
+        required
+        autocomplete="username"
+        data-testid="input-username"
+      />
+      <p class="field-error" data-testid="error-username"></p>
+
+      <label for="email">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        data-testid="input-email"
+      />
+      <p class="field-error" data-testid="error-email"></p>
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        minlength="8"
+        maxlength="128"
+        required
+        autocomplete="new-password"
+        data-testid="input-password"
+      />
+      <p class="field-hint">Minimum 8 characters.</p>
+      <p class="field-error" data-testid="error-password"></p>
+
+      <label for="confirm-password">Confirm password</label>
+      <input
+        id="confirm-password"
+        name="confirm-password"
+        type="password"
+        minlength="8"
+        required
+        autocomplete="new-password"
+        data-testid="input-confirm-password"
+      />
+      <p class="field-error" data-testid="error-confirm-password"></p>
+
+      <button type="submit" class="btn btn-primary" data-testid="btn-submit">
+        Register
+      </button>
+    </form>
+
+    <div
+      id="status"
+      class="status hidden"
+      role="status"
+      aria-live="polite"
+      data-testid="status"
+    ></div>
+
+    <p class="muted">
+      Already have an account?
+      <a href="/login" data-testid="link-login">Log in</a>.
+    </p>
+  </main>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/register.js"></script>
+</body>
+</html>

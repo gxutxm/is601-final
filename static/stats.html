@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stats — FastAPI Calculator</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1 class="brand">FastAPI Calculator</h1>
+      <div class="topbar-actions">
+        <a href="/dashboard" class="btn btn-ghost" data-testid="link-dashboard">Dashboard</a>
+        <span class="user-label" data-testid="username">…</span>
+        <button
+          id="logout-btn"
+          class="btn btn-ghost"
+          data-testid="btn-logout"
+        >Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="card">
+      <h2>Your calculation stats</h2>
+      <p class="subtitle">Aggregate metrics across all calculations you've created.</p>
+
+      <div
+        id="stats-empty"
+        class="empty hidden"
+        data-testid="stats-empty"
+      >
+        No calculations yet. Add some on the
+        <a href="/dashboard">dashboard</a> first.
+      </div>
+
+      <div id="stats-content" class="stats-content hidden" data-testid="stats-content">
+        <!-- Top-line metrics -->
+        <div class="stat-grid">
+          <div class="stat-tile">
+            <div class="stat-label">Total calculations</div>
+            <div class="stat-value" data-testid="stat-total">—</div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-label">Most-used operation</div>
+            <div class="stat-value" data-testid="stat-most-used">—</div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-label">Avg. result</div>
+            <div class="stat-value" data-testid="stat-avg-result">—</div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-label">Avg. operand a</div>
+            <div class="stat-value" data-testid="stat-avg-a">—</div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-label">Avg. operand b</div>
+            <div class="stat-value" data-testid="stat-avg-b">—</div>
+          </div>
+        </div>
+
+        <!-- Per-type breakdown -->
+        <h3 class="section-title">Operations breakdown</h3>
+        <div
+          id="type-bars"
+          class="type-bars"
+          data-testid="type-bars"
+        ></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/stats.js"></script>
+</body>
+</html>

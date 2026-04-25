@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — FastAPI Calculator</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <main class="card">
+    <h1>Log in</h1>
+    <p class="subtitle">Sign in with your email and password.</p>
+
+    <form id="login-form" novalidate>
+      <label for="email">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        data-testid="input-email"
+      />
+      <p class="field-error" data-testid="error-email"></p>
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        minlength="1"
+        required
+        autocomplete="current-password"
+        data-testid="input-password"
+      />
+      <p class="field-error" data-testid="error-password"></p>
+
+      <button type="submit" class="btn btn-primary" data-testid="btn-submit">
+        Log in
+      </button>
+    </form>
+
+    <div
+      id="status"
+      class="status hidden"
+      role="status"
+      aria-live="polite"
+      data-testid="status"
+    ></div>
+
+    <p class="muted">
+      New here? <a href="/register" data-testid="link-register">Create an account</a>.
+    </p>
+  </main>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/login.js"></script>
+</body>
+</html>
