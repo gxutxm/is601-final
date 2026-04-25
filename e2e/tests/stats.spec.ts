@@ -36,6 +36,9 @@ async function createCalc(
 
 test.describe("Stats page", () => {
   test("requires auth — redirects to /login when no token", async ({ page }) => {
+    // Navigate to a same-origin page first so we have a real document context
+    // (localStorage isn't accessible on about:blank).
+    await page.goto("/login");
     await page.evaluate(() => localStorage.removeItem("auth_token"));
     await page.goto("/stats");
     await page.waitForURL("**/login", { timeout: 5000 });
