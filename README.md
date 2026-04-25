@@ -1,6 +1,6 @@
 # FastAPI Calculator — Final Project
 
-Capstone project for IS601 — a JWT-authenticated FastAPI application with full BREAD on calculations, an HTML/JS front-end, and a complete CI/CD pipeline that runs unit + integration + end-to-end tests against Postgres before pushing the Docker image to Docker Hub.
+Final project for IS601 — a JWT-authenticated FastAPI application with full BREAD on calculations, an HTML/JS front-end, and a complete CI/CD pipeline that runs unit + integration + end-to-end tests against Postgres before pushing the Docker image to Docker Hub.
 
 **Status:** 102 pytest passing · 33 Playwright passing · CI green · Docker image deployed
 
